@@ -24,13 +24,12 @@ public class ArrayListHistory implements History {
 
     @Override
     public int size() {
-        //TODO
-        return 0;
+        return wordsArrayList.size();
     }
 
     @Override
     public void clear() {
-        //TODO
+        wordsArrayList.clear();
     }
 
     @Override
@@ -45,7 +44,11 @@ public class ArrayListHistory implements History {
 
     @Override
     public String toString() {
-        //TODO
-        return null;
+        StringBuilder sb = new StringBuilder();
+        for (String word : wordsArrayList) {
+            sb.append(word).append(" ");
+        }
+        if (sb.length() > 0) sb.deleteCharAt(sb.length() - 1); // last space char
+        return sb.toString();
     }
 }
