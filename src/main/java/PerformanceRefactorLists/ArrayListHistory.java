@@ -11,41 +11,51 @@ public class ArrayListHistory implements History {
 
     @Override
     public void add(String text) {
-        //TODO
-
+        String[] words = text.replaceAll("\\W+", " ")
+                .split(" ");
+        wordsArrayList.addAll(Arrays.asList(words));
     }
-
 
     @Override
     public void removeWord(String wordToBeRemoved) {
-        //TODO
+        wordsArrayList.removeIf(n -> n.contentEquals(wordToBeRemoved));
     }
-
 
     @Override
     public int size() {
-        //TODO
-        return 0;
+        return wordsArrayList.size();
     }
 
     @Override
     public void clear() {
-        //TODO
+        wordsArrayList.clear();
     }
 
     @Override
     public void replaceOneWord(String from, String to) {
-        //TODO
+        ListIterator<String> iterator = wordsArrayList.listIterator();
+        while (iterator.hasNext())
+        {
+            if (iterator.next().contentEquals(from)) iterator.set(to);
+        }
     }
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-        //TODO
+        String from = String.join(" ", fromWords);
+        String to = String.join(" ", toWords);
+        String words = String.join(" ", wordsArrayList);
+
+        wordsArrayList = Arrays.asList(words.replaceAll("\\b" + from + "\\b", to)
+                .split(" "));
     }
 
     @Override
     public String toString() {
-        //TODO
-        return null;
+        StringJoiner sj = new StringJoiner(" ");
+        for (String word : wordsArrayList) {
+            sj.add(word);
+        }
+        return sj.toString();
     }
 }
