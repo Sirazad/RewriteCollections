@@ -11,8 +11,9 @@ public class ArrayListHistory implements History {
 
     @Override
     public void add(String text) {
-        //TODO
-
+        String[] words = text.replaceAll("\\W+", " ")
+                .split(" ");
+        wordsArrayList.addAll(Arrays.asList(words));
     }
 
 
