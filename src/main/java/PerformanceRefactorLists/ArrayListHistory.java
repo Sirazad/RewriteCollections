@@ -38,12 +38,16 @@ public class ArrayListHistory implements History {
         {
             if (iterator.next().contentEquals(from)) iterator.set(to);
         }
-
     }
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-        //TODO
+        String from = String.join(" ", fromWords);
+        String to = String.join(" ", toWords);
+        String words = String.join(" ", wordsArrayList);
+
+        wordsArrayList = Arrays.asList(words.replaceAll("\\b" + from + "\\b", to)
+                .split(" "));
     }
 
     @Override
