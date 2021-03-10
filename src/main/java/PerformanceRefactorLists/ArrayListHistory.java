@@ -19,7 +19,7 @@ public class ArrayListHistory implements History {
 
     @Override
     public void removeWord(String wordToBeRemoved) {
-        //TODO
+        wordsArrayList.removeIf(n -> n.contentEquals(wordToBeRemoved));
     }
 
 
