@@ -1,9 +1,6 @@
 package PerformanceRefactorLists;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class LinkedListHistory implements History {
     /**
@@ -23,13 +20,12 @@ public class LinkedListHistory implements History {
 
     @Override
     public int size() {
-        //TODO
-        return 0;
+        return wordsLinkedList.size();
     }
 
     @Override
     public void clear() {
-        //TODO
+        wordsLinkedList.clear();
     }
 
     @Override
@@ -45,8 +41,12 @@ public class LinkedListHistory implements History {
 
     @Override
     public String toString() {
-        //TODO
-        return null;
+        StringJoiner sj = new StringJoiner(" ");
+        for (String word : wordsLinkedList) {
+            sj.add(word);
+        }
+        return sj.toString();
+
     }
 
 }
