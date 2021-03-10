@@ -45,7 +45,13 @@ public class LinkedListHistory implements History {
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-        //TODO
+        String from = String.join(" ", fromWords);
+        String to = String.join(" ", toWords);
+        String words = String.join(" ", wordsLinkedList);
+
+        wordsLinkedList = Arrays.asList(words.replaceAll("\\b" + from + "\\b", to)
+                .split(" "));
+
 
     }
 
