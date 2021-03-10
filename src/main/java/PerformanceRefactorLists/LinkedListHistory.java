@@ -17,10 +17,10 @@ public class LinkedListHistory implements History {
 
     @Override
     public void removeWord(String wordToBeRemoved) {
-        ListIterator<String> itr = wordsLinkedList.listIterator();
-        while (itr.hasNext())
+        ListIterator<String> iterator = wordsLinkedList.listIterator();
+        while (iterator.hasNext())
         {
-            if (itr.next().contentEquals(wordToBeRemoved)) itr.remove();
+            if (iterator.next().contentEquals(wordToBeRemoved)) iterator.remove();
         }
     }
 
@@ -36,7 +36,11 @@ public class LinkedListHistory implements History {
 
     @Override
     public void replaceOneWord(String from, String to) {
-        //TODO
+        ListIterator<String> iterator = wordsLinkedList.listIterator();
+        while (iterator.hasNext())
+        {
+            if (iterator.next().contentEquals(from)) iterator.set(to);
+        }
     }
 
     @Override
