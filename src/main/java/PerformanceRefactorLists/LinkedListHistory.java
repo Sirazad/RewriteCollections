@@ -1,9 +1,6 @@
 package PerformanceRefactorLists;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class LinkedListHistory implements History {
     /**
@@ -13,40 +10,59 @@ public class LinkedListHistory implements History {
 
     @Override
     public void add(String text) {
-        //TODO
+        String[] words = text.replaceAll("\\W+", " ")
+                .split(" ");
+        wordsLinkedList.addAll(Arrays.asList(words));
     }
 
     @Override
     public void removeWord(String wordToBeRemoved) {
-        //TODO
+        ListIterator<String> iterator = wordsLinkedList.listIterator();
+        while (iterator.hasNext())
+        {
+            if (iterator.next().contentEquals(wordToBeRemoved)) iterator.remove();
+        }
     }
 
     @Override
     public int size() {
-        //TODO
-        return 0;
+        return wordsLinkedList.size();
     }
 
     @Override
     public void clear() {
-        //TODO
+        wordsLinkedList.clear();
     }
 
     @Override
     public void replaceOneWord(String from, String to) {
-        //TODO
+        ListIterator<String> iterator = wordsLinkedList.listIterator();
+        while (iterator.hasNext())
+        {
+            if (iterator.next().contentEquals(from)) iterator.set(to);
+        }
     }
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-        //TODO
+        String from = String.join(" ", fromWords);
+        String to = String.join(" ", toWords);
+        String words = String.join(" ", wordsLinkedList);
+
+        wordsLinkedList = Arrays.asList(words.replaceAll("\\b" + from + "\\b", to)
+                .split(" "));
+
 
     }
 
     @Override
     public String toString() {
-        //TODO
-        return null;
+        StringJoiner sj = new StringJoiner(" ");
+        for (String word : wordsLinkedList) {
+            sj.add(word);
+        }
+        return sj.toString();
+
     }
 
 }
