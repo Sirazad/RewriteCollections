@@ -52,11 +52,10 @@ public class ArrayListHistory implements History {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        StringJoiner sj = new StringJoiner(" ");
         for (String word : wordsArrayList) {
-            sb.append(word).append(" ");
+            sj.add(word);
         }
-        if (sb.length() > 0) sb.deleteCharAt(sb.length() - 1); // last space char
-        return sb.toString();
+        return sj.toString();
     }
 }
