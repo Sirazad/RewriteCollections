@@ -10,7 +10,9 @@ public class LinkedListHistory implements History {
 
     @Override
     public void add(String text) {
-        //TODO
+        String[] words = text.replaceAll("\\W+", " ")
+                .split(" ");
+        wordsLinkedList.addAll(Arrays.asList(words));
     }
 
     @Override
