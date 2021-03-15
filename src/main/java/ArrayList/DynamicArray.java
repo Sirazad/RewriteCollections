@@ -7,6 +7,8 @@ public class DynamicArray {
     private int size;
 
     public DynamicArray(int capacity) {
+        array = new int[capacity];
+        size = 0;
     }
 
     public DynamicArray() {
