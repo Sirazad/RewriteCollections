@@ -43,6 +43,14 @@ public class DynamicArray {
 
 
     public void remove(int indexToBeRemoved) {
+        if (size < indexToBeRemoved|| indexToBeRemoved < 0) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        for (int i = indexToBeRemoved; i < size-1; i++) {
+            array[i] = array[i+1];
+        }
+        array = Arrays.copyOf(array, array.length-1);
+        size--;
     }
 
     public void insert(int index, int newValue) {
@@ -50,6 +58,7 @@ public class DynamicArray {
 
     @Override
     public String toString() {
+    return null;
     }
 
 }
