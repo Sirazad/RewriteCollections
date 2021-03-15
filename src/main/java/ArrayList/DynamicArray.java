@@ -1,5 +1,6 @@
 package ArrayList;
 
+import java.util.Arrays;
 
 public class DynamicArray {
 
@@ -19,12 +20,18 @@ public class DynamicArray {
         return array.length;
     }
 
-
     public int size() {
         return size;
     }
 
     public void add(int value) {
+
+        if (array.length == size) {
+            array = Arrays.copyOf(array, array.length+1);
+        }
+
+        array[size] = value;
+        size++;
     }
 
     public int get(int index) {
