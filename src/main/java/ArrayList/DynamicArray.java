@@ -35,7 +35,12 @@ public class DynamicArray {
     }
 
     public int get(int index) {
+        if (size < index|| index < 0) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        return array[index];
     }
+
 
     public void remove(int indexToBeRemoved) {
     }
