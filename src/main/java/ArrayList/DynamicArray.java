@@ -12,11 +12,16 @@ public class DynamicArray {
     }
 
     public DynamicArray() {
+        array = new int[4];
     }
 
     public int getCapacity() {
-            return array.length;
-        }
+        return array.length;
+    }
+
+
+    public int size() {
+        return size;
     }
 
     public void add(int value) {
