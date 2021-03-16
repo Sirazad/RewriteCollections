@@ -48,7 +48,24 @@ public class SinglyLinkedList<T> {
         return -1;
     }
 
+
     public void insert(int index, T number) {
+        this.size();
+        Link<T> temp = new Link<>(number);
+        tail = head;
+        if (index < 0 ) {
+            throw new IndexOutOfBoundsException();
+
+        }else if (index == 0) {
+            head = temp;
+            temp.setNext(tail);
+        } else {
+            for (int i = 1; i < index; i++) {
+                tail = tail.getNext();
+            }
+            temp.setNext(tail.getNext());
+            tail.setNext(temp);
+        }
     }
 
 
