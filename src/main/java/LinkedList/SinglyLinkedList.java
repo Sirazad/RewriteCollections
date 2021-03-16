@@ -45,6 +45,18 @@ public class SinglyLinkedList<T> {
      * @return Index of 'number' if it's in the list, otherwise -1;
      */
     public int indexOf(T number) {
+        int size = size();
+        tail = head;
+        if (tail == null ) return -1;
+
+        for (int i = 0; i < size; i++) {
+            T value = tail.getValue();
+            if (number.equals(value)) {
+                return i;
+            } else {
+                this.tail = tail.getNext();
+            }
+        }
         return -1;
     }
 
