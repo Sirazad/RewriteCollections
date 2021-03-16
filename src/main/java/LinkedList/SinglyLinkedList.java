@@ -53,7 +53,18 @@ public class SinglyLinkedList<T> {
 
 
     public int size() {
-        return 0;
+        int counter = 0;
+        if (this.head == null) {
+            return counter;
+        } else {
+            tail = head;
+            counter++;
+            while (tail.next != null) {
+                counter++;
+                this.tail = this.tail.getNext();
+            }
+        }
+        return counter;
     }
 
     /**
