@@ -62,6 +62,27 @@ public class SinglyLinkedList<T> {
      * @param index Position of value to be deleted.
      */
     public void remove(int index) {
+        if (index == 0) {
+            if (head == null) {
+                throw new IndexOutOfBoundsException();
+            } else {
+                head = head.getNext();
+            }
+            return;
+        }
+        Link<T> elementBeforeIndex = head;
+        while (index - 1 > 0) {
+            elementBeforeIndex = elementBeforeIndex.getNext();
+            index--;
+            if (elementBeforeIndex == null) {
+                throw new IndexOutOfBoundsException();
+            }
+        }
+        Link<T> elementAtIndex = elementBeforeIndex.getNext();
+        if (elementAtIndex == null) {
+            throw new IndexOutOfBoundsException();
+        }
+        elementBeforeIndex.setNext(elementAtIndex.getNext());
     }
 
     /**
