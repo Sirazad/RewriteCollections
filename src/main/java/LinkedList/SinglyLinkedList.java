@@ -32,6 +32,17 @@ public class SinglyLinkedList<T> {
 
 
     public void add(T value) {
+        if (this.head == null) {
+            this.head = new Link<>(value);
+            head.setNext(null);
+        } else {
+            tail = head;
+            while (tail.next != null) {
+                tail = tail.getNext();
+            }
+            Link<T> newElement = new Link(value);
+            tail.setNext(newElement);
+        }
     }
 
     public T get(int index) {
