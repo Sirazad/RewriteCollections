@@ -84,7 +84,16 @@ public class DynamicArray {
 
     @Override
     public String toString() {
-    return null;
+        if (this.size < 1) {
+            return "[]";
+        } else {
+            String result = "[";
+            for (int i = 1; i < this.size; i++) {
+                result += array[i-1]+", ";
+            }
+            result += array[this.size-1]+"]";
+            return result;
+        }
     }
 
 }
