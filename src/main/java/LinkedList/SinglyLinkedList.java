@@ -32,10 +32,33 @@ public class SinglyLinkedList<T> {
 
 
     public void add(T value) {
+        if (this.head == null) {
+            this.head = new Link<>(value);
+            head.setNext(null);
+        } else {
+            tail = head;
+            while (tail.next != null) {
+                tail = tail.getNext();
+            }
+            Link<T> newElement = new Link(value);
+            tail.setNext(newElement);
+        }
     }
 
     public T get(int index) {
-        return null;
+        T valueAtIndex = null;
+        int size = size();
+        tail = head;
+
+        if (size < index) {
+            throw new IndexOutOfBoundsException();
+        }
+        for (int i = 0; i < index+1; i++) {
+            T value = tail.getValue();
+            valueAtIndex = value;
+            this.tail = tail.getNext();
+        }
+        return valueAtIndex;
     }
 
     /**
@@ -45,15 +68,55 @@ public class SinglyLinkedList<T> {
      * @return Index of 'number' if it's in the list, otherwise -1;
      */
     public int indexOf(T number) {
+        int size = size();
+        tail = head;
+        if (tail == null ) return -1;
+
+        for (int i = 0; i < size; i++) {
+            T value = tail.getValue();
+            if (number.equals(value)) {
+                return i;
+            } else {
+                this.tail = tail.getNext();
+            }
+        }
         return -1;
     }
 
+
     public void insert(int index, T number) {
+        this.size();
+        Link<T> temp = new Link<>(number);
+        tail = head;
+        if (index < 0 ) {
+            throw new IndexOutOfBoundsException();
+
+        }else if (index == 0) {
+            head = temp;
+            temp.setNext(tail);
+        } else {
+            for (int i = 1; i < index; i++) {
+                tail = tail.getNext();
+            }
+            temp.setNext(tail.getNext());
+            tail.setNext(temp);
+        }
     }
 
 
     public int size() {
-        return 0;
+        int counter = 0;
+        if (this.head == null) {
+            return counter;
+        } else {
+            tail = head;
+            counter++;
+            while (tail.next != null) {
+                counter++;
+                this.tail = this.tail.getNext();
+            }
+        }
+        return counter;
     }
 
     /**
