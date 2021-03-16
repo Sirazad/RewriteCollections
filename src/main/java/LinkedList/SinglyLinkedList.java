@@ -35,7 +35,19 @@ public class SinglyLinkedList<T> {
     }
 
     public T get(int index) {
-        return null;
+        T valueAtIndex = null;
+        int size = size();
+        tail = head;
+
+        if (size < index) {
+            throw new IndexOutOfBoundsException();
+        }
+        for (int i = 0; i < index+1; i++) {
+            T value = tail.getValue();
+            valueAtIndex = value;
+            this.tail = tail.getNext();
+        }
+        return valueAtIndex;
     }
 
     /**
