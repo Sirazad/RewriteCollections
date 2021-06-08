@@ -45,10 +45,11 @@ public class StackRewrite <E> implements AbstractStack {
     public String toString() {
         if (isEmpty()) return "The stack is empty.";
         StringBuilder sb = new StringBuilder();
+        int count = size;
         for (E element : elements) {
-            int count = size;
-            sb.append(element+" ");
+            sb.append(element);
+            if (--count > 0) sb.append(", ");
         }
-        return sb.toString().trim();
+        return sb.toString();
     }
 }
