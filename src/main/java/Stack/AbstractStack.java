@@ -3,7 +3,7 @@ package Stack;
 
 public interface AbstractStack<E> {
 
-    boolean push(E element);
+    E push(E element);
 
     E pop();
 

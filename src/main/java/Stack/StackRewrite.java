@@ -1,12 +1,20 @@
 package Stack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StackRewrite <E> implements AbstractStack {
 
+    private List<E> elements = new ArrayList<>();
     private int size = 0;
 
+
+
     @Override
-    public boolean push(Object element) {
-        return false;
+    public E push(Object element) {
+        elements.add((E) element);
+        size++;
+        return (E) element;
     }
 
     @Override
@@ -21,11 +29,12 @@ public class StackRewrite <E> implements AbstractStack {
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+
+        return (size == 0);
     }
 }
