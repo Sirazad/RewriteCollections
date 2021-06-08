@@ -9,11 +9,17 @@ public class HashTable <K, V> {
     private List<List<Entry>> buckets;
 
     private int getBucketIndexForKey(K key) {
+
+
+
         throw new RuntimeException("FIXME");
+
+
     }
 
     private List<Entry> getBucketAtIndex(int position) {
         throw new RuntimeException("FIXME");
+
     }
 
     private Entry findEntryInBucket(K key, List<Entry> bucket) {
