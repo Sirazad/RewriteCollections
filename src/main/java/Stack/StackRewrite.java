@@ -7,24 +7,28 @@ public class StackRewrite <E> implements AbstractStack {
 
     private List<E> elements = new ArrayList<>();
     private int size = 0;
-
-
+    private E lastElement = null;
 
     @Override
     public E push(Object element) {
         elements.add((E) element);
         size++;
-        return (E) element;
+        lastElement = (E) element;
+        return lastElement;
     }
 
     @Override
-    public Object pop() {
-        return null;
+    public E pop() {
+        if (size == 0) return null;
+        E removed = lastElement;
+        elements.remove(lastElement);
+        lastElement = elements.get(--size-1);
+        return removed;
     }
 
     @Override
-    public Object peek() {
-        return null;
+    public E peek() {
+        return (lastElement== null)?null:lastElement;
     }
 
     @Override
@@ -34,7 +38,17 @@ public class StackRewrite <E> implements AbstractStack {
 
     @Override
     public boolean isEmpty() {
-
         return (size == 0);
+    }
+
+    @Override
+    public String toString() {
+        if (isEmpty()) return "The stack is empty.";
+        StringBuilder sb = new StringBuilder();
+        for (E element : elements) {
+            int count = size;
+            sb.append(element+" ");
+        }
+        return sb.toString().trim();
     }
 }
